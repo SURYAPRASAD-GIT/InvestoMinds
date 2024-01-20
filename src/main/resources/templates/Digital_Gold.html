@@ -1,0 +1,164 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Digital Gold</title>
+    <style>
+ 	body
+      {
+       background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size:1500px 800px;
+       background-size:cover;
+      }
+       .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+   nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 50px;
+      }
+
+      .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+
+button {
+  align-items:center;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+</style>
+<script type="text/javascript">
+function invest()
+{
+alert("Confirm to produce");
+}
+
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+    
+      title:{
+      text: "Digital Gold"
+      },
+       data: [
+      {        
+        type: "spline",
+        
+        dataPoints: [
+        { x: new Date(2021, 03, 1), y:   4572},
+        { x: new Date(2021, 07, 1), y:  4962},
+        { x: new Date(2021, 11, 1), y:  3362},
+        { x: new Date(2022, 03, 1), y:  5772},
+        { x: new Date(2022, 07, 1), y:  4172},
+        { x: new Date(2022, 11, 1), y:  6672},
+        { x: new Date(2023, 03, 1), y:  5050},
+        { x: new Date(2023, 07, 1), y:  3550},
+        { x: new Date(2023, 11, 1), y:  8000}      
+        ]
+      }       
+        
+      ]
+    });
+
+    chart.render();
+  }
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="navbar">
+        <img src="/img/Logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/}" >Home</a></li>
+                <li><a href="aboutus.jpg" th:href="@{/aboutus}">About Us</a></li>
+                <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="returns">
+        <h3 style="font-size:30px;color:#000;">Digital Gold<span style="color:red;font-size:30px;padding-left:550px;"><b>-2.67%</b></span></h3><h3 style="font-size:25px;color:#000;line-height:0.5">Gold 24k-99.90%<span style="color:;font-size:20px;padding-left:450px">6Months return</span></h3>
+    </div>
+    <div id="chartContainer" style="height: 350px; width:100%;"></div><br>
+    <p>Digital Gold is the new virtual currency that lets you buy and sell gold online in a matter of minutes. The Digital Gold you buy is backed up by physical gold reserves, and with the Digital Gold you purchase on Finserv MARKETS you get access to a secure vault for 5 years. Gold has always been valuable as an investment tool owing to the easy liquidity it offers, but with Digital Gold, you can sell gold and have the money credited to your account instantly. Additionally, the Digital Gold you buy can be redeemed and delivered to your doorstep - giving you the ease of designing the perfect jewellery for your perfect moment, all from the comfort of your computer. </p>
+
+    <!--
+<button type="submit" onclick="invest()"> Click to Invest </button>
+
+    <span th:text="${usr.id}">id</span>
+    <span th:text="${p1.id}">plan_id</span>
+    <span th:text="${p1.plan_names}">plan_name</span>
+-->
+
+    <form th:action="@{/addplan}" method="post" th:object="${addplan}">
+
+        <input type="hidden"  th:readonly="true" th:value="${usr.id}" id="user_id" name="user_id" />
+        <input type="hidden"  th:readonly="true" th:value="${p1.id}" id="plans_id" name="plans_id" />
+
+        <button type="submit" class="btn btn-success"> Click to Invest </button>
+    </form>
+
+    <!-- <div class="form-group">
+        <span th:field="*{user_id}" th:value="${usr.id}"></span>
+    </div>-->
+        <!--
+
+                <div class="form-group">
+                <label class="control-label" for="postid" style="font-size:20px"> Login Id </label> <input
+                    id="postid" class="form-control" th:field="*{plans_id}" th:value="${p1.id}"required
+                    autofocus="autofocus" />
+                </div>
+        -->
+
+        <!--    <span th:field="*{user_id}" >${usr.id}</span>
+            <span th:field="*{plans_id}" >${p1.id}</span>
+        <span th:field="*{${usr.id}}" />-->
+
+</div>
+</body>
+</html>

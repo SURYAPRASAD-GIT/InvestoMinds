@@ -1,0 +1,84 @@
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<title>checkmybalance</title>
+<style>
+body
+      {
+       background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size:1500px 800px;
+       background-size:cover;
+      }
+ .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+
+   .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+     nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 60px;
+      }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="navbar">
+        <img src="/img/Logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/}" >Home</a></li>
+                <li><a href="aboutus.jpg" th:href="@{/aboutus}">About Us</a></li>
+                <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+<div th:each="b : ${bal}">
+    <h2 style="color:white", align="center">Hello <span sec:authentication="principal.firstName"> User</span>,<br/></h2>
+    <h2 style="text-align:center; color:white"> your savings account balance :
+    <span th:text="${b.available_balance}">Balance</span></h2>
+</div>
+</div>
+</body>
+</html>

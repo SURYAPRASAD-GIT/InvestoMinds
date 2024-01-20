@@ -1,0 +1,128 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<style>
+body
+      {
+       background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size:1500px 800px;
+       background-size:cover;
+      }
+ .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+
+   .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+     nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 60px;
+      }
+     .center {
+  margin-left: auto;
+  margin-right: auto;
+  top:40%;
+  background:white;
+  font-size:25px;
+}
+
+</style>
+<title>Account details</title>
+</head>
+<body >
+<div class="container">
+
+    <div class="navbar">
+        <img src="/img/Logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/}" >Home</a></li>
+                <li><a href="aboutus.jpg" th:href="@{/aboutus}">About Us</a></li>
+                <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+<h2 style="text-align:center">Account Details</h2>
+
+<br>
+<table class="center">
+    <thead>
+    <tr>
+        <h2 class="tabl"><td>Name</td>
+            <td th:text="${' :- '+usr.firstName+' '+usr.lastName}">Fullname</td></h2>
+    </tr>
+   <tr>
+       <td></td>
+   </tr>
+    <tr>
+      <h2>  <td>Email</td>
+        <td th:text="${' :- '+usr.email}">Email</td></h2>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+       <h2> <td>Login-Id</td>
+        <td th:text="${' :- '+usr.username}">LogiId</td></h2>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <h2> <td>Phone</td>
+            <td th:text="${' :- '+usr.phone}">Phone Number</td></h2>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <h2> <td>Address</td>
+            <td th:text="${' :- '+usr.address}">Address</td></h2>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+
+    </thead>
+
+</table>
+</div>
+</body>
+</html>

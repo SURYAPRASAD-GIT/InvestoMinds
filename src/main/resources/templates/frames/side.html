@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+      <meta charset="ISO-8859-1">
+      <title>Investominds</title>
+
+      <style>
+ button
+{       background: #010955;
+        color:#fff;
+        height:50px;
+	width:200px;
+	margin:35px auto;
+	position:relative;
+	box-shadow: 0 0 20px 9px #ff61241f;
+	border-radius: 30px;
+}
+body
+{
+background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat; 
+       background-attachment: fixed; 
+       background-size: cover;"
+}
+.logo
+     {
+      width:30%;
+      cursor:pointer;
+     }
+</style>
+</head>
+<body>
+      <img src="/img/Logo.png" class="logo">
+  
+      <button type='submit' onclick=window.open("accountdetails.html") target="_self"><b>Account Details</b></button><br>
+      <button type='submit' onclick=window.open("checkmybalance.html")><b>Check My balance</b></button><br>
+      <button type='submit' onclick=window.open("viewmyinvestments.html")><b>View My investments</b></button><br>
+      <button type='submit' onclick=window.open("investnow.html")><b>Invest Now</b></button><br>
+</body>
+</html>

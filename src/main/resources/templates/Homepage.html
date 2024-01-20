@@ -1,0 +1,48 @@
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/css/homepage.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <img src="/img/Logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/" th:href="@{/log}">Login</a></li>
+                <li><a href="aboutus.jpg" th:href="@{/aboutus}">About Us</a></li>
+                <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="row">
+          <div class="col">
+            <h1>InvestoMinds</h1>
+            <p style="font-size:20px;">Invest the best</p>
+              <a href="/" th:href="@{/registration}" class="register">  <button style="font-size:20px;" type="button">Register</button></a>
+        </div>
+        <div class="col">
+            <a href="/" th:href="@{/log}"> <div class="card card1">
+                <h5 class="cardcolor">Gold based investment</h5>
+            </div></a>
+            <a href="/" th:href="@{/log}"><div class="card card2">
+                <h5 >Mutual Funds</h5>
+            </div></a>
+            <a href="/" th:href="@{/log}"><div class="card  card3">
+                <h5>Investment Calculator</h5>
+            </div></a>
+            <div class="card card4">
+                <h5 class="cardcolor">Fixed Deposit</h5>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+</html>

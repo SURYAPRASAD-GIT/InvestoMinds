@@ -1,0 +1,165 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<title>Dashboard</title>
+<style>
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+body{
+       background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat; 
+       background-attachment: fixed; 
+       background-size:1500px 800px;
+       background-size:cover;
+      }
+ .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+
+   .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+     nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 60px;
+      }
+
+
+.menu{
+margin-right:1000px;
+}
+
+.menuimg{
+      width:30px;
+      hight:30px;
+      cursor:pointer;
+}
+
+</style>
+    <script type="text/javascript">
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="navbar">
+            <img src="/img/Logo.png" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#" th:href="@{/}" >Home</a></li>
+                    <li><a href="#" th:href="@{/aboutus}">About Us</a></li>
+                    <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                    <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    <div>
+    <span class="menu"  style="color:white; align:left; font-size:30px;" onclick="openNav()"><img class="menuimg" src="/img/menu.jpg" > <br>Menu</span>
+    <h2 style="color:white", align="center">Welcome <span sec:authentication="principal.firstName"> User</span> </h2>
+    </div>
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="accountdetails.html" th:href="@{/users/accountdetails}">Account Details</a>
+    <a href="checkmybalance.html" th:href="@{'/checkbalance/'+${usr.id}}">Check My Balance</a>
+    <a href="userplans.html" th:href="@{'/getuserplans/'+${usr.id}}">View My Investments</a>
+    <a href="investnow.html" th:href="@{/allplans}">InvestNow</a>
+    </div>
+
+<!-- Use any element to open the sidenav
+<span class="menu"  style="color:white;" onclick="openNav()"><img class="menuimg" src="menu.jfif" >Menu</span> -->
+
+<!--<h3 style="color:white;font-size:20px; text-align:center">Welcome User</h3>-->
+</div>
+</body>
+</html>

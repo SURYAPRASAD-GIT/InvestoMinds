@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Investominds</title>
+
+	<!--<link rel="stylesheet" href="" th:href="@{/css/styles1.css}" />-->
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<style>
+	body
+      {
+       background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/img/Investment.png");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size:cover;
+      }
+       .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+     nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 50px;
+      }
+
+      .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+
+     .card{
+      width:200px;
+      height:230px;
+      display:inline-block;
+      border-radius:10px;
+      padding:15px 25px;
+      box-sizing:border-box;
+      cursor:pointer;
+      margin:10px 15px;
+      background-position:center;
+      background-size:cover;
+      transition:transform 0.5s;
+     }
+  .card1{
+    background-image:url("/img/goldcard.jpg");
+    }
+  .card2{
+    background-image:url("/img/card2.png");
+    }
+  .card3{
+    background-image:url("/img/card3.jpg");
+    }
+   .card4{
+    background-image:url("/img/card4.png");
+   }
+   .card:hover{
+    transform:translateY(-10px);
+    }
+   
+    
+   h5{
+      color:white;
+      text-shadow:0 0 5px  #999;
+   }
+   .cardcolor{
+      color:black;
+      text-shadow:0 0 5px  #999;
+   }
+   .card:p{
+      text-shadow:0 0 5px  #000;
+      font-size:8px;
+    }
+
+.container1{
+     background:darkgrey;
+     border-radius: 5px;
+     width:25%;
+     height:55%;
+     margin-left:1000px;
+     margin-top:-500px;
+     }
+    .input {
+border:0;
+padding:10px;
+font-size:1.3em;
+font-family:"Ubuntu Light","Ubuntu","Ubuntu Mono","Segoe Print","Segoe UI";
+color:#ccc;
+border:solid 1px #ccc;
+margin:0 0 20px;
+width:800px;
+-moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 6px;
+
+}
+    input:focus {
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.heading{
+top:-10px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+
+          <div class="navbar">
+          <img src="/img/Logo.png" class="logo">
+			<nav>
+				<ul>
+					<li><a href="/" th:href="@{/login}">Home</a></li>
+					<li><a href="#" th:href="@{/aboutus}">About Us</a></li>
+					<li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+					<li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+				</ul>
+			</nav>
+	 </div>
+	 <div class="heading">
+		<h1 style="font-size:80px; color:white;">InvestoMinds</h1>
+		<p style="font-size:20px;color:white;">Invest the best</p>
+
+		<div class="row">
+			<div  class="col">
+			        <a href="/" th:href="@{/login}">
+                                        <div class="card card1">
+					<h5 class="cardcolor">Gold based investment</h5>
+				        </div></a>
+				<a href="/" th:href="@{/login}">
+                                        <div class="card card2">
+					<h5 >Mutual Funds</h5>
+				        </div></a>
+                         </div>
+                         <div  class="col">
+                                 <a href="/" th:href="@{/login}">
+                                        <div class="card card3">
+					<h5 >Investment Calculator</h5>
+				        </div></a>
+				 <a href="/" th:href="@{/login}">
+                                        <div class="card card4">
+					<h5 class="cardcolor" >Fixed Deposit</h5>
+				        </div></a>
+
+		        </div>
+		</div>
+	</div>
+
+	<div class = "container1">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+
+				<h1 style="color:white;"> Login </h1>
+				<br>
+				<form th:action="@{/login}" method="post">
+
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div style="font-size:13px;" class="alert alert-danger">Invalid Login ID or password.</div>
+					</div>
+
+					<!-- logout message -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logged out.</div>
+					</div>
+
+					<div class = "form-group" >
+						<label for ="username" style="font-size:20px;color:white;"> Username </label> :
+						<input type="text"  id ="username" name = "username"
+							   placeholder="Enter Login ID" autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label for="password" style="font-size:20px; color:white;">Password</label>: <input type="password"
+																											id="password" name="password"	placeholder="Enter Password" />
+					</div>
+					<!--class="form-control"-->
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									   class="btn btn-success" value="Log In" />
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="form-group">
+					<span style="font-size:12px; color:white"><b>New user? </b><a href="/" th:href="@{/registration}" class="btn btn-primary">Register
+								here</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--<br>
+	<div>
+		<marquee><h1 style="color:white;"><span style="color:black;background:white";>Welcome to </span>
+			<span style="color:white; background:black">InvestoMinds </span></h1></marquee>
+	</div>-->
+	<br>
+
+
+</div>
+</body>
+</html>

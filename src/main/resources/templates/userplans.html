@@ -1,0 +1,144 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+
+<head>
+    <title>Investnow</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous" />
+
+
+    <style>
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+body
+      {
+       background-image:url("/img/sidebg.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size:1500px 800px;
+       background-size:cover;
+      }
+ .container
+    {
+      width:100%;
+      height:100vh;
+      padding-left:5%;
+      padding-right:5%;
+      box-sizing:border-box;
+    }
+.navbar{
+     height:12%;
+     display:flex;
+     align-items:center;
+
+   }
+
+   .logo
+     {
+      width:5%;
+      cursor:pointer;
+     }
+     nav
+      {
+        flex: 1;
+        text-align: right;
+      }
+     nav ul li a
+      {
+       text-decoration: none;
+       font-size: 20px;
+       color: #fff;
+       font-family: sans-serif;
+      }
+      nav ul
+       {
+          display: inline-block;
+          list-style: none;
+       }
+      nav ul li
+      {
+         list-style:none;
+         display: inline-block;
+         margin-left: 60px;
+      }
+      .card{
+      border-radius:10px;
+      cursor:pointer;
+      transition:transform 0.5s;
+     }
+
+     .card:hover{
+    transform:translateY(-5px);
+    background:lightgrey;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="navbar">
+        <img src="/img/Logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/}" >Home</a></li>
+                <li><a href="#" th:href="@{/aboutus}">About Us</a></li>
+                <li><a href='privacypolicy.html' th:href="@{/privacy}">Privacy Policy</a></li>
+                <li><a href='contactus.html' th:href="@{/contactus}">Contact Us</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h1>Your Plans</h1>
+
+    <div class="row" > <div class="column" th:each="plan: ${plans}">
+        <div class="card">
+            <!--<p th:text="${plan.plans}">Plan Description</p>-->
+            <h3 th:text="${plan.plan_names}">Plan name</h3>
+            <p th:text="${plan.plan_description}">Plan Description</p>
+            <p th:text="'Rate of Return: '+${plan.rate_of_return}+'%'">rate </p>
+            <p th:text="'Term Period: '+${plan.term_period}">Term Period</p>
+            <p th:text="'Amount: '+${plan.min_amount}">Term Period</p>
+        </div> </div> </div>
+    <br>
+
+</div>
+</body>
+</html>
